@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="box">마우스를 올려보세요.</p>
+
+    <script>
+        // mouseover -> 글씨를 orange 색으로 변경
+        // mouseout  -> 글씨를 black 색으로 변경
+        
+        /* | 방법 1. 
+        const box = document.querySelector("#box");
+
+        function changeColorToOrange() {
+            box.style.color = "orange";
+        };
+        function changeColorToBlack() {
+            box.style.color = "black";
+        };
+
+        box.addEventListener("mouseover", changeColorToOrange); 
+        box.addEventListener("mouseout", changeColorToBlack);
+
+        | 방법 2. 
+        const box = document.querySelector("#box");
+
+        box.addEventListener("mouseover", function() {
+            box.style.color = "orange";
+        })
+
+        box.addEventListener("mouseout", function() {
+            box.style.color = "black";
+        });
+
+
+        | 방법 3. function 대신에 () => 로 변경              (방법 3, 4번은 **화살표 함수)
+        const box = document.querySelector("#box");
+
+        box.addEventListener("mouseover", () => {
+            box.style.color = "orange";
+        })
+
+        box.addEventListener("mouseout", () => {
+            box.style.color = "black";
+        });
+
+
+        | 방법 4.   << 화살표 함수 안에 들어가는 코드가 1줄인 경우 {} 중괄호 제거 가능! 
+        const box = document.querySelector("#box");
+        box.addEventListener("mouseover", () => box.style.color = "orange");
+        box.addEventListener("mouseout", () => box.style.color = "black");
+ 
+        */
+        /*
+        아래와 같이 " 화살표 함수 안에 들어가는 코드가 2줄 이상인 경우 중괄호 생략 불가 " ! 
+        box.addEventListener("mouseover", () => {
+            box.style.color = "orange";
+            box.style.fontSize = "20px";
+        });
+        ..
+        */
+        const box = document.querySelector("#box");
+
+        function changeColor(color) {
+            box.style.color = color;
+        };
+
+        // 이벤트 리스너를 등록할 때, 함수 정의를 동시에 할 수 있다.
+        box.addEventListener("mouseover", ()=> changeColor("orange"));
+        box.addEventListener("mouseout", ()=> changeColor("black")); 
+
+        // 결론
+        // 1) '() => {}' 형태를 보면, 함수라고 해석한다.
+        // 2)addEventListener(이벤트, 함수)를 호출할 때, 두 번째 인자는 반드시 함수를 전달한다. 
+
+
+
+    </script>
+
+</body>
+</html>
